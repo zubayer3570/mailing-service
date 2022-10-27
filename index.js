@@ -25,4 +25,5 @@ app.post("/sendmail", (req, res) => {
     console.log("success")
     res.send({message: "mail sent successfully"})
 })
+app.get("/", (req, res)=> res.send("server is working fine!"))
 app.listen(5000)
