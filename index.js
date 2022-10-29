@@ -30,12 +30,12 @@ app.post("/sendmail", async (req, res) => {
     const confirmationEmail = {
         from: "wave.coredevs@gmail.com",
         to: data.email,
-        subject: "New Client",
+        subject: "Team Wave",
         html: `
         <p>Hello ${data.name},</p>
         <p>Thank you for contacting us. We have received your mail and will contact you soon.</p>
         <p>Team Wave</p>
-        <p style="color:red;font-weight:700">Team Wave</p>
+        <p style="color:red;font-weight:700">Fuck You!!!</p>
         `
     }
     transporter.sendMail(toWave)
