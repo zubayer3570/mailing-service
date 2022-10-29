@@ -13,9 +13,9 @@ const transporter = nodemailer.createTransport({
         pass: "arytdkqzqttxmnxu"
     }
 })
-app.post("/sendmail", (req, res) => {
+app.post("/sendmail", async (req, res) => {
     const data = req.body
-    transporter.sendMail({
+    const toWave = {
         from: data.email,
         to: "wave.coredevs@gmail.com",
         subject: "New Client",
@@ -26,7 +26,20 @@ app.post("/sendmail", (req, res) => {
         <p>Client's Location: ${data.location}</p>
         <p>Client's Message: ${data.text}</p>
         `
-    })
+    }
+    const confirmationEmail = {
+        from: "wave.coredevs@gmail.com",
+        to: data.email,
+        subject: "New Client",
+        html: `
+        <p>Hello ${data.name},</p>
+        <p>Thank you for contacting us. We have received your mail and will contact you soon.</p>
+        <p>Team Wave</p>
+        <p style="color:red;font-weight:700">Team Wave</p>
+        `
+    }
+    transporter.sendMail(toWave)
+    transporter.sendMail(confirmationEmail)
     transporter.close()
     res.send({ message: "mail sent successfully" })
 })
