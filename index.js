@@ -38,8 +38,8 @@ app.post("/sendmail", async (req, res) => {
         <p style="color:red;font-weight:700">Fuck You!!!</p>
         `
     }
-    transporter.sendMail(toWave)
-    transporter.sendMail(confirmationEmail)
+    await transporter.sendMail(confirmationEmail)
+    await transporter.sendMail(toWave)
     transporter.close()
     res.send({ message: "mail sent successfully" })
 })
