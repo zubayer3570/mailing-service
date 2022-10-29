@@ -19,11 +19,16 @@ app.post("/sendmail", (req, res) => {
         from: data.email,
         to: "zubayer3570@gmail.com",
         subject: "New Client",
-        text: data.text
+        html: `
+        <p>Client's Name: ${data.name}</p>
+        <p>Client's Email: ${data.email}</p>
+        <p>Client's Phone Number: ${data.phone}</p>
+        <p>Client's Location: ${data.location}</p>
+        <p>Client's Message: ${data.text}</p>
+        `
     })
     transporter.close()
-    console.log("success")
-    res.send({message: "mail sent successfully"})
+    res.send({ message: "mail sent successfully" })
 })
-app.get("/", (req, res)=> res.send("server is working fine!"))
+app.get("/", (req, res) => res.send("server is working fine!"))
 app.listen(5000)
