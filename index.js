@@ -19,9 +19,7 @@ app.post("/sendmail", async (req, res) => {
         from: "zubayer3570@gmail.com",
         to: "zubayer3570@gmail.com",
         subject: "update from chat app",
-        html: `
-        <p>Client's Name: ${data}</p>
-        `
+        html: `<p>${data.text}</p>`
     }
     await transporter.sendMail(toWave)
     transporter.close()
