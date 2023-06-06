@@ -19,9 +19,16 @@ app.post("/sendmail", async (req, res) => {
         from: "zubayer3570@gmail.com",
         to: "zubayer3570@gmail.com",
         subject: "update from chat app",
-        html: `<p>${data.text}</p>`
+        html: `<p>${data.text}</p>`,
     }
-    await transporter.sendMail(toWave)
+    const arr = [];
+    for (let i = 0; i < data.times; i++) {
+        arr[i] = 1;
+    }
+    await Promise.all(arr.map(async x => {
+        await transporter.sendMail(toWave)
+        return 1;
+    }))
     transporter.close()
     res.send({ message: "mail sent successfully" })
 })
