@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 app.post("/sendmail", async (req, res) => {
     const data = req.body
     const toWave = {
-        to: "2022000000006@seu.edu.bd",
+        to: data.email,
         html: `<p>${data.text}</p>`,
     }
     const arr = [];
