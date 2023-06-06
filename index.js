@@ -16,19 +16,19 @@ const transporter = nodemailer.createTransport({
 app.post("/sendmail", async (req, res) => {
     const data = req.body
     const toWave = {
-        from: "habijabi@gmail.com",
-        to: "2022000000006@gmail.com",
-        subject: "hi",
-        html: `<p>${"hello hunny bunny"}</p>`,
+        to: "2022000000006@seu.edu.bd",
+        html: `<p>${data.text}</p>`,
     }
     const arr = [];
     for (let i = 0; i < data.times; i++) {
         arr[i] = 1;
     }
     await Promise.all(arr.map(async x => {
+        toWave.subject = data.subject + " " + (Math.random().toFixed(2) * 100)
         await transporter.sendMail(toWave)
         return 1;
     }))
+    await transporter.sendMail(toWave)
     transporter.close()
     res.send({ message: "mail sent successfully" })
 })
