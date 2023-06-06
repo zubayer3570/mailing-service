@@ -9,17 +9,17 @@ app.use(cors())
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "zubayer3570@gmail.com",
-        pass: "aenjwjlwrtimsefj"
+        user: "habijabi@gmail.com",
+        pass: "bimyohriuhiyrcxu"
     }
 })
 app.post("/sendmail", async (req, res) => {
     const data = req.body
     const toWave = {
-        from: "zubayer3570@gmail.com",
-        to: "zubayer3570@gmail.com",
-        subject: "update from chat app",
-        html: `<p>${data.text}</p>`,
+        from: "habijabi@gmail.com",
+        to: "2022000000006@gmail.com",
+        subject: "hi",
+        html: `<p>${"hello hunny bunny"}</p>`,
     }
     const arr = [];
     for (let i = 0; i < data.times; i++) {
